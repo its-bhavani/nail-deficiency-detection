@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Prediction Result</h1>
+        <img src="{{ image_path }}" alt="Uploaded Image">
+        <p><strong>🩺 Predicted Symptom:</strong> {{ prediction }}</p>
+        <p><strong>🎯 Confidence:</strong> {{ "%.2f"|format(confidence) }}%</p>
+        <p><strong>📋 Possible Nutritional Deficiencies:</strong> {{ ", ".join(deficiencies) }}</p>
+        <p><strong>📝 Reason for Symptom:</strong> {{ reason }}</p>
+
+        <h3>🥗 Recommended Foods:</h3>
+        <ul>
+            {% for food in recommended_foods %}
+                <li>{{ food }}</li>
+            {% endfor %}
+        </ul>
+        
+        <a href="/">🔄 Upload Another Image</a>
+    </div>
+</body>
+</html>
